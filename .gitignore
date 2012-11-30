@@ -1,3 +1,4 @@
+# Numerous always-ignore extensions
 lib-cov
 *.seed
 *.log
@@ -6,9 +7,35 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
 
 pids
 logs
 results
 
 npm-debug.log
+
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+nbproject
+Thumbs.db
+
+# NPM packages folder.
+node_modules/
+
+# Brunch folder for temporary files.
+tmp/
+public/
