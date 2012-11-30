@@ -1,0 +1,42 @@
+{
+    "author": "EDesign Labs",
+    "name": "overpass",
+    "description": "A visual argument builder",
+    "version": "0.0.1",
+    "homepage": "https://github.com/EDesignLabs/Overpass",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/EDesignLabs/Overpass.git"
+    },
+    "engines": {
+        "node": "0.8.x",
+        "npm": "1.1.x"
+    },
+    "scripts": {
+        "start": "brunch watch --server",
+        "postinstall": "brunch build --minify"
+    },
+    "dependencies": {
+        "statik": ">= 1.1.0", 
+        "brunch": ">= 1.0 < 1.5", 
+        
+        "javascript-brunch": "> 1.0 < 1.5",
+        "coffee-script-brunch": "> 1.0 < 1.5",
+
+        "css-brunch": "> 1.0 < 1.5",
+        "stylus-brunch": "> 1.0 < 1.5",
+
+        "handlebars-brunch": "> 1.0 < 1.5",
+
+        "uglify-js-brunch": "> 1.0 < 1.5",
+        "clean-css-brunch": "> 1.0 < 1.5",
+
+        "coffeelint-brunch": "> 1.0 < 1.5",
+
+        "auto-reload-brunch": "> 1.0 < 1.5",
+
+        "mocha": "0.14.0",
+        "expect.js": "0.1.2",
+        "ws": "0.4.21"
+    }
+}
