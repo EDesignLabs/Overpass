@@ -19,7 +19,7 @@
     "dependencies": {
         "statik": ">= 1.1.0", 
         "brunch": ">= 1.0 < 1.5", 
-        
+
         "javascript-brunch": "> 1.0 < 1.5",
         "coffee-script-brunch": "> 1.0 < 1.5",
 
@@ -35,8 +35,15 @@
 
         "auto-reload-brunch": "> 1.0 < 1.5",
 
+        "process-env-brunch": "> 1.0 < 1.5",
+
         "mocha": "0.14.0",
-        "expect.js": "0.1.2",
+        "chai": "*",
+        "sinon": "*",
+        "sinon-chai": "*",
+        "chai-backbone": "*",
+        "chai-jquery": "*",
+        "lodash": "*",
         "ws": "0.4.21"
     }
 }
