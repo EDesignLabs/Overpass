@@ -6,5 +6,5 @@ module.exports = class AppView extends View
 
     initialize: ->
         @router = new AppRouter()
-        Hipster?.Routers?.AppRouter = @router
+        Overpass?.Routers?.AppRouter = @router
 

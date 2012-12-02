@@ -3,6 +3,8 @@
 ## Getting started
 
 ### Developing
+
+#### Set Up
 - Install [node.js](http://nodejs.org/). If you're not a fan, don't worry--we're just using it to manage Javascript modules on the client side.  Nothing server side here!
 - Install the [brunch framework](http://brunch.io/) globally
 
@@ -33,6 +35,33 @@
 - Try making a change to `app/assets/index.html` and saving the file.  Your browser refreshes automagically with the change! Brunch in action!
 - Many changes can be made right inside the `app/assets` directory, which works pretty much like any other webroot.
 
+#### Branching
+- Add the main EDesignLabs Overpass *upstream* repo as a remote on your local repo. You only ever need to do this once:
+
+```
+    git remote add upstream git://github.com/EDesignLabs/Overpass.git
+```
+
+- From then on, every time you want to add a new feature or fix a bug, create a new branch based on the latest from upstream (do *not* work off your own master branch)!
+
+```
+    git fetch upstream
+    git checkout upstream/master -b name-of-your-feature-branch
+```
+
+- Install the latest modules Overpass needs, in case there have been changes
+
+```
+    npm install
+```
+
+- Once you've finished your work and have added and commited your changes locally, push to your own *origin* repo:
+
+```
+    git push origin name-of-your-feature-branch
+```
+
+- Finally, go to GitHub and submit a pull request from your new branch.  You or a teammate can then review the request and merge it cleanly into the main EDesignLabs master!
 
 ### Deploying
 - Install the [heroku toolbelt](https://toolbelt.heroku.com/). It's a ridiculously simple way to set up a test server.

@@ -5,4 +5,5 @@ describe 'AppView', ->
         @view = new AppView()
 
     it "should exist", ->
-        expect( @view ).to.be.ok()
+        expect( @view ).to.be.ok
+

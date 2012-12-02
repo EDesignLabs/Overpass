@@ -1,4 +1,13 @@
-expect = require 'expect.js'
+lodash = require 'lodash'
+chai = require 'chai'
+sinon = require 'sinon'
+sinonChai = require 'sinon-chai'
+chaiBackbone = require 'chai-backbone'
+chai.use sinonChai
+chai.use chaiBackbone
 
 module.exports =
-  expect: expect
+  chai: chai
+  expect: chai.expect
+  sinon: sinon
+  _: lodash
