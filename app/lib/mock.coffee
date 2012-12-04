@@ -3,5 +3,5 @@ base = {}
 module.exports = class Mock
     base: base
 
-    constructor: (data) ->
+    constructor: (data = {}) ->
         _.extend @, @base, data

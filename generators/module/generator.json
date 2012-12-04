@@ -15,5 +15,8 @@
     }, {
         "name": "template",
         "params": "{{name}}"
+    }, {
+        "name": "mock",
+        "params": "{{name}}"
     }]
 }

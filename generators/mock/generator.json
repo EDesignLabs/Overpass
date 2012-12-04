@@ -1,0 +1,7 @@
+{
+    "files": [{
+        "from": "mock.coffee.hbs",
+        "to": "app/mocks/{{name}}.coffee"
+    }],
+    "dependencies": []
+}
