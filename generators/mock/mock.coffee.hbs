@@ -1,0 +1,6 @@
+Mock = require "../lib/mock"
+
+base = {}
+
+module.exports = class {{#camelize}}{{name}}{{/camelize}}Mock extends Mock
+    base: base
