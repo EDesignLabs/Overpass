@@ -18,6 +18,24 @@
             window.brunch['auto-reload'] = { enabled: true };
         </script>
         <script src="javascripts/modernizr-2.6.1.js"></script>
+        
+        <!-- added functions for drag and drop -->
+        <script>
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+
+			function drag(ev) {
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+
+			function drop(ev) {
+				ev.preventDefault();
+				var data=ev.dataTransfer.getData("Text");
+				ev.target.appendChild(document.getElementById(data));
+			}
+		</script>
+        
         <link rel="stylesheet" href="stylesheets/app.css">
     </head>
 
@@ -28,6 +46,23 @@
 
         <section class="layout-container">
             <h1>Overpass!</h1>
+            <h2>Drag the text to the boxes</h2>
+            <p>Main Argument</p>
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <p>Supporting Argument</p>
+            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			<p>Supporting Argument</p>
+            <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <p>Conclusion</p>
+            <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        <br>
+			<img id="drag1" src="images/main_argument.jpg" draggable="true" ondragstart="drag(event)" width="300" height="100">
+			<img id="drag2" src="images/supporting.jpg" draggable="true" ondragstart="drag(event)" width="300" height="100">
+			<img id="drag3" src="images/supporting2.jpg" draggable="true" ondragstart="drag(event)" width="300" height="100">
+			<img id="drag4" src="images/supporting3.jpg" draggable="true" ondragstart="drag(event)" width="300" height="100">
+			<img id="drag5" src="images/conclusion.jpg" draggable="true" ondragstart="drag(event)" width="300" height="100">
+            
+            
         </section>
 
         <script src="javascripts/vendor.js" defer></script>
