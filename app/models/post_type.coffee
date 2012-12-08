@@ -11,21 +11,21 @@ class PostTypeModel extends Model
         key: 'posts'
         relatedModel: PostModel
         collectionType: PostsCollection
-        includeInJSON: Backbone.Model.prototype.idAttribute
+        includeInJSON: true
         reverseRelation:
             type: Backbone.HasOne
             key: 'post_type'
-            includeInJSON: Backbone.Model.prototype.idAttribute
+            includeInJSON: true
     ,
         type: Backbone.HasMany
         key: 'planks'
         relatedModel: PlankModel
         collectionType: PlanksCollection
-        includeInJSON: Backbone.Model.prototype.idAttribute
+        includeInJSON: true
         reverseRelation:
             type: Backbone.HasOne
             key: 'post_type'
-            includeInJSON: Backbone.Model.prototype.idAttribute
+            includeInJSON: true
     ]
 
 PostTypeModel.setup()

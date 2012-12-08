@@ -28,6 +28,7 @@ describe 'BridgeModel', ->
         @plank3.set 'post_type', @postType1
 
     it "should contain valid posts", ->
+        expect(@model.get('posts').at(0).get("post_type").get 'title').to.equal "Test type"
         expect(@model.get('posts').at(2).get("post_type").get 'title').to.equal "Test title"
         @model.get('posts').at(2).get("post_type").set "title", "Third"
         expect(@model.get('posts').at(2).get("post_type").get 'title').to.equal "Third"

@@ -17,6 +17,8 @@ lib-cov
 *.vi
 *~
 *.sass-cache
+*.sublime-project
+*.sublime-workspace
 
 pids
 logs
