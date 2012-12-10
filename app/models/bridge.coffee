@@ -10,7 +10,7 @@ class BridgeModel extends Model
         key: 'planks'
         relatedModel: PlankModel
         collectionType: PlanksCollection
-        includeInJSON: Backbone.Model.prototype.idAttribute
+        includeInJSON: true
         reverseRelation:
             type: Backbone.HasOne
             key: 'bridge'
@@ -20,7 +20,7 @@ class BridgeModel extends Model
         key: 'posts'
         relatedModel: PostModel
         collectionType: PostsCollection
-        includeInJSON: Backbone.Model.prototype.idAttribute
+        includeInJSON: true
         reverseRelation:
             type: Backbone.HasOne
             key: 'bridge'
