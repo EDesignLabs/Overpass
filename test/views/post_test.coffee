@@ -17,5 +17,6 @@ describe 'PostView', ->
     it "should have a post model", ->
         expect(@view.model).to.be.an.instanceof PostModel
 
-    it "should display its post type", ->
-        expect(@view.$el.children('h2').text()).to.equal "Test title"
+    describe 'View rendering', ->
+        it "should display its post type", ->
+            expect(@view.$el.children('h2').text()).to.equal "Test title"

@@ -1,5 +1,5 @@
-View      = require '../lib/view'
-AppRouter = require '../routers/app_router'
+View        = require '../lib/view'
+AppRouter   = require '../routers/app_router'
 
 module.exports = class AppView extends View
     el: 'body.application'
@@ -8,3 +8,4 @@ module.exports = class AppView extends View
         @router = new AppRouter()
         Overpass?.Routers?.AppRouter = @router
 
+        super()
