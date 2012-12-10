@@ -4,8 +4,8 @@ TestObjectFactory = require 'lib/test_object_factory'
 module.exports = class AppRouter extends Backbone.Router
     routes:
         '': ->
-        'test': 'dynamic'
-        'test/:id': 'dynamic'
+        'bridge': 'dynamic'
+        'kit/:id': 'dynamic'
 
     dynamic: (id) ->
         console.log "kit #" + 1
