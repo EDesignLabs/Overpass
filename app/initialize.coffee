@@ -13,6 +13,4 @@ $ ->
     Overpass.Views.AppView = new AppView = require 'views/app_view'
 
     # Initialize Backbone History
-    Backbone.history.start
-        pushState: true
-        root: '/'
+    Backbone.history.start()

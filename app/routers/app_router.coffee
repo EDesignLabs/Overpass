@@ -8,7 +8,7 @@ module.exports = class AppRouter extends Backbone.Router
         'kit/:id': 'dynamic'
 
     dynamic: (id) ->
-        console.log "kit #" + 1
+        Overpass?.Views?.AppView.$el.children('.layout-container').empty()
         @factory = new TestObjectFactory
         @bridge = new BridgeView
             model: @factory.create 'bridge'

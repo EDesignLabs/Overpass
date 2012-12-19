@@ -22,7 +22,7 @@ describe 'PlankView', ->
             @view.render()
 
         it "should display its body", ->
-            expect(@view.$el.children('.body').text()).to.equal "This is a fetch test"
+            expect(@view.$el.children('.body').text().trim()).to.equal "This is a fetch test"
 
     describe 'Fetch', ->
         beforeEach ->
