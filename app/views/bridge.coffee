@@ -7,6 +7,13 @@ module.exports = class BridgeView extends View
     template: require 'views/templates/bridge'
     className: 'bridge'
 
+    events:
+        'click .check': 'check'
+
+    subscriptions:
+        "plank:set":    "onPlankSet"
+        "plank:unset":  "onPlankUnset"
+
     model: new BridgeModel()
 
     initialize: ->
@@ -18,13 +25,15 @@ module.exports = class BridgeView extends View
         @addAllPosts @model.get('posts')#.models
         @addAllPlanks @model.get('planks')#.models
 
-    addAllPosts: (posts) ->
-        posts.each (post)=>
+    addAllPosts: (@posts) ->
+        @posts.each (post)=>
             @addOnePost post, posts
+        @
 
-    addAllPlanks: (planks) ->
-        planks.each (plank)=>
+    addAllPlanks: (@planks) ->
+        @planks.each (plank)=>
             @addOnePlank plank, planks
+        @
 
     addOnePost: (post, posts) =>
         @postView = new PostView
@@ -40,4 +49,17 @@ module.exports = class BridgeView extends View
         if plank
             @$('.planks').append @plankView.$el
         @
+
+    check: (ev) =>
+        @posts.every (post) ->
+            if post.get 'plank'
+                post.matchesPlank post.get 'plank'
+            else
+                no
+
+    onPlankSet: (ev)=>
+        @$el.children('.indicator').toggleClass 'win', @check()
+
+    onPlankUnset: (ev)=>
+        @$el.children('.indicator').toggleClass 'win', @check()
 

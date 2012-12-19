@@ -1,15 +1,20 @@
 View = require '../lib/view'
 PlankModel = require '../models/plank'
+PostTypeModel = require '../models/post_type'
 
 module.exports = class PlankView extends View
     template: require 'views/templates/plank'
     tagName: 'li'
     className: 'plank'
-    attributes:
-        draggable: true
-        ondragstart: "drag(event)"
 
     model: new PlankModel()
+
+    events:
+        "dragstart": "dragstart"
+
+    subscriptions:
+        "post:drop":    "onPostDrop"
+        "post:out":     "onPostOut"
 
     initialize: ->
         super arguments
@@ -19,10 +24,23 @@ module.exports = class PlankView extends View
             @onErrorModel()
 
     afterRender: ->
-        @$el.attr 'id', Math.random()*10000
+        @$el.draggable()
+        @$el.attr 'id', 'plank-' + @cid
 
     onChangeModelBody: () ->
         @render()
 
     onErrorModel: () ->
         @model.set('body', 'Error')
+
+    dragstart: (ev, ui) ->
+
+    onPostDrop: (postView, draggable) ->
+        if @$el.attr('id') == draggable.attr('id')
+            postView.model.set 'plank', @model
+            Backbone.Mediator.pub 'plank:set'
+
+    onPostOut: (postView, draggable) ->
+        if @$el.attr('id') == draggable.attr('id')
+            postView.model.unset 'plank'
+            Backbone.Mediator.pub 'plank:unset'

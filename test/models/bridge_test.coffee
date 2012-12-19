@@ -28,13 +28,13 @@ describe 'BridgeModel', ->
         @plank3.set 'post_type', @postType1
 
     it "should contain valid posts", ->
-        expect(@model.get('posts').at(0).get("post_type").get 'title').to.equal "Test type"
-        expect(@model.get('posts').at(2).get("post_type").get 'title').to.equal "Test title"
+        expect(@model.get('posts').at(0).get("post_type").get 'title').to.equal "Post type 1"
+        expect(@model.get('posts').at(2).get("post_type").get 'title').to.equal "Post type 3"
         @model.get('posts').at(2).get("post_type").set "title", "Third"
         expect(@model.get('posts').at(2).get("post_type").get 'title').to.equal "Third"
 
     it "should contain valid planks", ->
-        expect(@model.get('planks').at(2).get 'body').to.equal "This is a fetch test"
+        expect(@model.get('planks').at(2).get 'body').to.contain "Climate change is not connected to human activity"
         @model.get('planks').at(2).set "body", "C"
         expect(@model.get('planks').at(2).get 'body').to.equal "C"
 
