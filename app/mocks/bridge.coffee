@@ -4,6 +4,7 @@ base = {
     posts: [
         {
             id: 20,
+            body: "Main Argument",
             post_type: {
                 id: 40,
                 title: "Post type 1"
@@ -11,6 +12,7 @@ base = {
         },
         {
             id: 30,
+            body: "Supporting Evidence",
             post_type: {
                 id: 50,
                 title: "Post type 2"
@@ -18,6 +20,7 @@ base = {
         },
         {
             id: 40,
+            body: "Counter Argument",
             post_type: {
                 id: 60,
                 title: "Post type 3"
@@ -25,6 +28,7 @@ base = {
         },
         {
             id: 50,
+            body: "Conclusion",
             post_type: {
                 id: 70,
                 title: "Post type 4"

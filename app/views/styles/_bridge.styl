@@ -1,12 +1,12 @@
 .bridge
-    background-color green
+    background-color rgb(233,241,213)
     clearfix()
 
     .posts
     .planks
         margin 0
         padding 0
-        background-color yellow
+        background-color white
         list-style-type none
 
     .posts
@@ -17,12 +17,19 @@
 
     .indicator
         position absolute
-        width 100px
-        height 100px
-        background-color red
-        left 50%
-        top 0
+        width 200px
+        height 297px
+        left 25%
+        top -340px
 
         &.win
-            background-color white
+            position:absolute;
+            width 200px
+            height 297px
+            left 25%
+            top 500px
+            -webkit-transition: ease-in-out 2s;
+            -moz-transition:    ease-in-out 2s;
+            -o-transition:      ease-in-out 2s;
+            transition:         ease-in-out 2s;
 
