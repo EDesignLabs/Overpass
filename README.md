@@ -25,6 +25,12 @@
     npm install
 ```
 
+- Set your [backend server](https://github.com/mikeedwards/Underpass) address in the environment variables
+
+```
+    export BASE_API_URL=http://localhost:5000
+```
+
 - Fire up your brunch test server
 
 ```
