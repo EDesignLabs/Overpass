@@ -87,7 +87,13 @@
 - Open your shiny new web app in the browser!
 
 ```
-   heroku apps:open
+    heroku apps:open
+```
+
+- Be sure that you have the experimental user-env-compile feature activated
+
+```
+    heroku labs:enable user-env-compile -a your-heroku-app
 ```
 
 ## Details
