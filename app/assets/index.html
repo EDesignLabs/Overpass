@@ -18,47 +18,10 @@
             window.brunch['auto-reload'] = { enabled: true };
         </script>
         <script src="/javascripts/modernizr-2.6.1.js"></script>
-        
+        <script src="/javascripts/vendor.js"></script>
+        <script src="/javascripts/app.js" onload="require('initialize');"></script>
+      
         <!-- added functions for drag and drop -->
-        <script>
-        	var answer;
-        	var counter = 0;
-        	var responses = new Array();
-        	        
-			function allowDrop(ev) {
-				ev.preventDefault();
-			}
-
-			function drag(ev) {
-				ev.dataTransfer.setData("Text",ev.target.id);
-				answer = ev.target.id;
-			}
-
-			function drop(ev, whichBox) {
-				ev.preventDefault();
-				var data=ev.dataTransfer.getData("Text");
-				ev.target.appendChild(document.getElementById(data));
-				
-				if (whichBox == answer) {
-					responses[counter] = true;
-//					alert("correct!");
-					counter = counter + 1;
-				} else {
-					responses[counter] = false;
-//					alert("wrong!");
-					counter = counter + 1;
-				}
-				
-				if (responses.length==4) {
-					if(responses[0]==true && responses[1]==true && responses[2] == true && responses[3] == true ) {
-						alert("You Win! Refresh and try the next level!");
-					} else {
-						alert("Wrong! Refresh and try again!");
-					}
-				}
-			}
-		</script>
-        
         <link rel="stylesheet" href="/stylesheets/app.css">
     </head>
 
@@ -68,98 +31,7 @@
         <![endif]-->
 
         <section class="layout-container">
-            <h1>Overpass!</h1>
-            <h2>Drag the text to the boxes</h2>
-            
-            <h3>First pick your paragraph! Input values 1, 2, or 3!</h3>
-            <p>Type:<input id="whichText" value ="1" />
-            <button onclick="textChooser()">Submit</button></p>
-            
-            <p id="titleOne"></p>
-            <div id="div1" ondrop="drop(event,'drag1')" ondragover="allowDrop(event)"></div>
-            <p id="titleTwo"></p>
-            <div id="div2" ondrop="drop(event,'drag2')" ondragover="allowDrop(event)"></div>
-            <p id="titleThree"></p>
-            <div id="div3" ondrop="drop(event,'drag3')" ondragover="allowDrop(event)"></div>
-            <p id="titleFour"></p>
-            <div id="div4" ondrop="drop(event,'drag4')" ondragover="allowDrop(event)"></div>
-            <p id="titleFive"></p>
-			<div id="drag1" draggable="true" ondragstart="drag(event)"></div>
-            <br>
-            <div id="drag3" draggable="true" ondragstart="drag(event)"></div>
-            <br>
-			<div id="drag4" draggable="true" ondragstart="drag(event)"></div>
-			<br>
-			<div id="drag2" draggable="true" ondragstart="drag(event)"></div>
-
-			<script>
-			function textChooser() {
-
-				var whichText;
-				var selected = new Array();
-				var climate = new Array();
-				var evolution = new Array();
-				var geneticEngineering = new Array();
-				
-				climate[0] = "Main Argument";
-				climate[1] = "Supporting Evidence";
-				climate[2] = "Counter Argument";
-				climate[3] = "Conclusion";
-				climate[4] = "Climate Change is happening because of pollution in the atmosphere caused by humans.";
-				climate[5] = "Carbon Dioxide levels in the atmosphere have have continued to rise since the beginning of the Industrial Revolution."
-				climate[6] = "Climate change is not connected to human activity, and is a natural process that Earth undergoes as a result of the precession of the Earth’s axis."
-				climate[7] = "There are both natural and unnatural (human induced) reasons that climate change is happening on Earth.";
-				
-				evolution[0] = "Main Argument";
-				evolution[1] = "Supporting Evidence";
-				evolution[2] = "Counter Argument";
-				evolution[3] = "Conclusion";
-				evolution[4] = "Evolution by natural selection is the means by which living things have developed on Earth.";
-				evolution[5] = "By looking at homologous structures, scientists can see what different living organisms share a common ancestor."
-				evolution[6] = "God created all living things."
-				evolution[7] = "There is observable evidence that supports the theory that evolution by natural selection is the reason why living things have developed on Earth."
-
-				geneticEngineering[0] = "Main Argument";
-				geneticEngineering[1] = "Supporting Evidence";
-				geneticEngineering[2] = "Counter Argument";
-				geneticEngineering[3] = "Conclusion";
-				geneticEngineering[4] = "Genetic engineering should be practiced on humans.";
-				geneticEngineering[5] = "Infectious diseases can be treated by implanting genes that code for antiviral proteins specific to each antigen."
-				geneticEngineering[6] = "Genetic engineering borderlines on many moral issues, some of which questions whether humans have the right to manipulate the laws and course of nature."
-				geneticEngineering[7] = "Governments should produce legislation to control what sort of experiments and procedures are done involving human genetic engineering."
-
-				
-				whichText=document.getElementById("whichText").value;
-				if (whichText==1) {
-					for (var i = 0;i<climate.length;i++) { 
-						selected[i]=climate[i];		
-					}
-				} else if (whichText==2) {
-					for (var i = 0;i<evolution.length;i++) { 
-						selected[i]=evolution[i];		
-					}				
-				} else if (whichText==3) {
-					for (var i = 0;i<geneticEngineering.length;i++) { 
-						selected[i]=geneticEngineering[i];		
-					}				
-				}
-
-				document.getElementById("titleOne").innerHTML=selected[0];
-				document.getElementById("titleTwo").innerHTML=selected[1];
-				document.getElementById("titleThree").innerHTML=selected[2];
-				document.getElementById("titleFour").innerHTML=selected[3];
-
-				document.getElementById("drag1").innerHTML=selected[4];
-				document.getElementById("drag2").innerHTML=selected[5];
-				document.getElementById("drag3").innerHTML=selected[6];
-				document.getElementById("drag4").innerHTML=selected[7];
-			}
-			</script>
-           
         </section>
-
-        <script src="/javascripts/vendor.js" defer></script>
-        <script src="/javascripts/app.js" defer onload="require('initialize');"></script>
 
          <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

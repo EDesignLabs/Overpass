@@ -4,10 +4,9 @@ TestObjectFactory = require 'lib/test_object_factory'
 module.exports = class AppRouter extends Backbone.Router
     routes:
         '': ->
-        'bridge': 'dynamic'
-        'kit/:id': 'dynamic'
+        'bridge/:id': 'bridge'
 
-    dynamic: (id) ->
+    bridge: (id) ->
         Overpass?.Views?.AppView.$el.children('.layout-container').empty()
         @factory = new TestObjectFactory
         @bridge = new BridgeView

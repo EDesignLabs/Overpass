@@ -9,9 +9,6 @@ module.exports = class PlankView extends View
 
     model: new PlankModel()
 
-    events:
-        "dragstart": "dragstart"
-
     subscriptions:
         "post:drop":    "onPostDrop"
         "post:out":     "onPostOut"
@@ -24,7 +21,9 @@ module.exports = class PlankView extends View
             @onErrorModel()
 
     afterRender: ->
-        @$el.draggable()
+        @$el.draggable
+            start: =>
+                Backbone.Mediator.pub 'plank:moved'
         @$el.attr 'id', 'plank-' + @cid
 
     onChangeModelBody: () ->
@@ -33,8 +32,6 @@ module.exports = class PlankView extends View
     onErrorModel: () ->
         @model.set('body', 'Error')
 
-    dragstart: (ev, ui) ->
-
     onPostDrop: (postView, draggable) ->
         if @$el.attr('id') == draggable.attr('id')
             postView.model.set 'plank', @model
@@ -42,5 +39,6 @@ module.exports = class PlankView extends View
 
     onPostOut: (postView, draggable) ->
         if @$el.attr('id') == draggable.attr('id')
-            postView.model.unset 'plank'
-            Backbone.Mediator.pub 'plank:unset'
+            if postView.model.get('plank')?.get('id') == @model.get('id')
+                postView.model.unset 'plank'
+                Backbone.Mediator.pub 'plank:unset'

@@ -8,11 +8,13 @@ module.exports = class BridgeView extends View
     className: 'bridge'
 
     events:
-        'click .check': 'check'
+        'click .go-button': 'onClickGoButton'
 
     subscriptions:
-        "plank:set":    "onPlankSet"
-        "plank:unset":  "onPlankUnset"
+        "plank:moved":      "onPlankMoved"
+        "plank:set":        "onPlankSet"
+        "plank:unset":      "onPlankUnset"
+        "bridge:modified":  "onBridgeModified"
 
     model: new BridgeModel()
 
@@ -51,15 +53,27 @@ module.exports = class BridgeView extends View
         @
 
     check: (ev) =>
-        @posts.every (post) ->
+        @posts.every (post) =>
+            plank = post.get 'plank'
             if post.get 'plank'
                 post.matchesPlank post.get 'plank'
             else
                 no
 
+    onClickGoButton: (ev)=>
+        success = @check ev
+        @$el.children('.indicator').toggleClass 'win', success
+        @$el.children('.indicator').toggleClass 'fail', not success
+
+    onPlankMoved: (ev)=>
+        #do something like reset the activity timer
+
     onPlankSet: (ev)=>
-        @$el.children('.indicator').toggleClass 'win', @check()
+        Backbone.Mediator.pub 'bridge:modified'
 
     onPlankUnset: (ev)=>
-        @$el.children('.indicator').toggleClass 'win', @check()
+        Backbone.Mediator.pub 'bridge:modified'
+
+    onBridgeModified: (ev)=>
+        #do something like drop the next plank, etc.
 
