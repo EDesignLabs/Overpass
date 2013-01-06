@@ -1,3 +1,4 @@
+BridgeModel  = require '../models/bridge'
 BridgeView  = require '../views/bridge'
 TestObjectFactory = require 'lib/test_object_factory'
 
@@ -10,7 +11,10 @@ module.exports = class AppRouter extends Backbone.Router
         Overpass?.Views?.AppView.$el.children('.layout-container').empty()
         @factory = new TestObjectFactory
         @bridge = new BridgeView
-            model: @factory.create 'bridge'
+            model: new BridgeModel
+                'id':id
+
+        @bridge.model.fetch()
 
         Overpass?.Views?.BridgeView = @bridge
 

@@ -5,6 +5,7 @@ PostsCollection = require "collections/posts"
 PlanksCollection = require "collections/planks"
 
 class PostTypeModel extends Model
+    urlRoot:  $PROCESS_ENV_BASE_API_URL + '/api/v1/post_type/'
 
     relations: [
         type: Backbone.HasMany

@@ -5,6 +5,10 @@ PostsCollection = require "collections/posts"
 PlanksCollection = require "collections/planks"
 
 class BridgeModel extends Model
+    #for the moment, we're not actually cloning bridges
+    #so, we use the level to fake it
+    urlRoot: $PROCESS_ENV_BASE_API_URL + '/api/v1/level/'
+
     relations: [
         type: Backbone.HasMany
         key: 'planks'
