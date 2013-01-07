@@ -1,6 +1,5 @@
 BridgeModel  = require '../models/bridge'
 BridgeView  = require '../views/bridge'
-TestObjectFactory = require 'lib/test_object_factory'
 
 module.exports = class AppRouter extends Backbone.Router
     routes:
@@ -8,15 +7,18 @@ module.exports = class AppRouter extends Backbone.Router
         'bridge/:id': 'bridge'
 
     bridge: (id) ->
-        Overpass?.Views?.AppView.$el.children('.layout-container').empty()
-        @factory = new TestObjectFactory
-        @bridge = new BridgeView
-            model: new BridgeModel
-                'id':id
+        Overpass?.Views?.BridgeView?.remove()
 
-        @bridge.model.fetch()
+        @model = new BridgeModel
+            'id':id
+        @model.fetch()
+
+        @bridge = new BridgeView
+            model: @model
 
         Overpass?.Views?.BridgeView = @bridge
+
+        Overpass?.Views?.AppView.$el.children('.layout-container').empty()
 
         Overpass?.Views?.AppView.$el.children('.layout-container')
             .prepend @bridge.$el

@@ -19,4 +19,4 @@ describe 'PostView', ->
 
     describe 'View rendering', ->
         it "should display its post type", ->
-            expect(@view.$el.children('h2').text()).to.equal "Test title"
+            expect(@view.$el.text()).to.contain "Test title"

@@ -18,7 +18,7 @@ class BridgeModel extends Model
         reverseRelation:
             type: Backbone.HasOne
             key: 'bridge'
-            includeInJSON: true
+            includeInJSON: false
     ,
         type: Backbone.HasMany
         key: 'posts'
@@ -28,7 +28,7 @@ class BridgeModel extends Model
         reverseRelation:
             type: Backbone.HasOne
             key: 'bridge'
-            includeInJSON: true
+            includeInJSON: false
     ]
 
 BridgeModel.setup()

@@ -19,6 +19,8 @@ module.exports = class BridgeView extends View
     model: new BridgeModel()
 
     initialize: ->
+        @plankViews = []
+        @postViews = []
         super()
         @model.on 'add:posts', @addOnePost
         @model.on 'add:planks', @addOnePlank
@@ -28,28 +30,46 @@ module.exports = class BridgeView extends View
         @addAllPlanks @model.get('planks')#.models
 
     addAllPosts: (@posts) ->
+        @removeAllPosts()
+
         @posts.each (post)=>
             @addOnePost post, posts
         @
 
+    removeAllPosts: () ->
+        _.each @postViews, (view, index, list)->
+            view.remove()
+
     addAllPlanks: (@planks) ->
+        _.each @plankViews, (view, index, list)->
+            view.remove()
+
         @planks.each (plank)=>
             @addOnePlank plank, planks
         @
 
+    removeAllPlanks: () ->
+        _.each @plankViews, (view, index, list)->
+            view.remove()
+
     addOnePost: (post, posts) =>
-        @postView = new PostView
+        postView = new PostView
             model: post
 
+        @postViews.push postView
+
         if post
-            @$('.posts').append @postView.$el
+            @$('.posts').append postView.$el
         @
 
     addOnePlank: (plank, planks) =>
-        @plankView = new PlankView
+        plankView = new PlankView
             model: plank
+
+        @plankViews.push plankView
+
         if plank
-            @$('.planks').append @plankView.$el
+            @$('.planks').append plankView.$el
         @
 
     check: (ev) =>
@@ -77,3 +97,7 @@ module.exports = class BridgeView extends View
     onBridgeModified: (ev)=>
         #do something like drop the next plank, etc.
 
+    remove: ->
+        @removeAllPosts()
+        @removeAllPlanks()
+        super()
