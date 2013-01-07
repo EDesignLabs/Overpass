@@ -7,26 +7,6 @@ describe 'BridgeModel', ->
     beforeEach ->
         @model = @factory.create 'bridge'
 
-        @postType1 = @factory.create 'post_type'
-
-        @post2 = @factory.create 'post'
-        @post3 = @factory.create 'post'
-
-        @plank2 = @factory.create 'plank'
-        @plank3 = @factory.create 'plank'
-
-        @post2.set 'post_type', @postType1
-        @post2.set 'bridge', @model
-
-        @plank2.set 'post_type', @postType1
-        @plank2.set 'bridge', @model
-
-        @model.get('posts').add @post3
-        @model.get('planks').add @plank3
-
-        @post3.set 'post_type', @postType1
-        @plank3.set 'post_type', @postType1
-
     it "should contain valid posts", ->
         expect(@model.get('posts').at(0).get("post_type").get 'title').to.equal "Post type 1"
         expect(@model.get('posts').at(2).get("post_type").get 'title').to.equal "Post type 3"

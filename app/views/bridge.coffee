@@ -19,11 +19,11 @@ module.exports = class BridgeView extends View
     model: new BridgeModel()
 
     initialize: ->
+        @plankViews = []
+        @postViews = []
         super()
         @model.on 'add:posts', @addOnePost
         @model.on 'add:planks', @addOnePlank
-        @plankViews = []
-        @postViews = []
 
     afterRender: ->
         @addAllPosts @model.get('posts')#.models

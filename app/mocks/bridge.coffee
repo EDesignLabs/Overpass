@@ -6,7 +6,7 @@ base = {
             id: 20,
             body: "Main Argument",
             post_type: {
-                id: 40,
+                resource_uri: '/api/v1/post_type/40',
                 title: "Post type 1"
             }
         },
@@ -14,7 +14,7 @@ base = {
             id: 30,
             body: "Supporting Evidence",
             post_type: {
-                id: 50,
+                resource_uri: '/api/v1/post_type/50',
                 title: "Post type 2"
             }
         },
@@ -22,7 +22,7 @@ base = {
             id: 40,
             body: "Counter Argument",
             post_type: {
-                id: 60,
+                resource_uri: '/api/v1/post_type/60',
                 title: "Post type 3"
             }
         },
@@ -30,7 +30,7 @@ base = {
             id: 50,
             body: "Conclusion",
             post_type: {
-                id: 70,
+                resource_uri: '/api/v1/post_type/70',
                 title: "Post type 4"
             }
         }
@@ -41,7 +41,7 @@ base = {
             body: 'Climate Change is happening because of pollution
             in the atmosphere caused by humans.',
             post_type: {
-                id: 40,
+                resource_uri: '/api/v1/post_type/40',
                 title: "Post type 1"
             }
         },
@@ -50,7 +50,7 @@ base = {
             body: 'Carbon Dioxide levels in the atmosphere have have continued
             to rise since the beginning of the Industrial Revolution.',
             post_type: {
-                id: 50,
+                resource_uri: '/api/v1/post_type/50',
                 title: "Post type 2"
             }
         },
@@ -60,7 +60,7 @@ base = {
             a natural process that Earth undergoes as a result of the
             precession of the Earth’s axis.',
             post_type: {
-                id: 60,
+                resource_uri: '/api/v1/post_type/60',
                 title: "Post type 3"
             }
         },
@@ -69,7 +69,7 @@ base = {
             body: 'There are both natural and unnatural (human induced)
             reasons that climate change is happening on Earth.',
             post_type: {
-                id: 70,
+                resource_uri: '/api/v1/post_type/70',
                 title: "Post type 4"
             }
         }
