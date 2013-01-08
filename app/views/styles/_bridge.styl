@@ -1,40 +1,45 @@
 .bridge
-    background-color rgb(233,241,213)
     clearfix()
+    margin 50px 0 50px 0
 
     .posts
     .planks
-        margin 0
+        margin 0 0 0 0
         padding 0
-        background-color white
         list-style-type none
 
     .posts
         float left
+        margin 0 0 0 150px
 
     .planks
+        height 300px
         float right
+        background-color rgba(255,255,255,0.4)
+
 
     .go-button
+        float right
         margin 0 auto
         width 100px
         height 100px
-        background-color green
+        background-color rgb(242,56,90)
         color white
         font-size 2em
+
 
     .indicator
         position absolute
         width 200px
         height 297px
-        left 25%
+        left 35%
         top -340px
 
         &.win
             position absolute
             width 200px
             height 297px
-            left 25%
+            left 35%
             top 500px
             -webkit-transition ease-in-out 2s
             -moz-transition    ease-in-out 2s
