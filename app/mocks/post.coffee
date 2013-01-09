@@ -1,6 +1,7 @@
 Mock = require "../lib/mock"
 
 base = {
+    "lane": 1,
     "post_type": {
         "title": "Test title",
         "image": {

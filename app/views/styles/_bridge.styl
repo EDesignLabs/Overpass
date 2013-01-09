@@ -10,13 +10,19 @@
 
     .posts
         float left
-        margin 0 0 0 150px
+ 
+        &.active
+            display block
+
+        &.left
+            margin 0 0 0 110px
+
+        &.right
+            margin 0 0 0 110px
 
     .planks
-        height 300px
         float right
         background-color rgba(255,255,255,0.4)
-
 
     .go-button
         float right

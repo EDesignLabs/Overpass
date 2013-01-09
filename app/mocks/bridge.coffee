@@ -4,6 +4,7 @@ base = {
     posts: [
         {
             id: 20,
+            lane: 1,
             body: "Main Argument",
             post_type: {
                 resource_uri: '/api/v1/post_type/40',
@@ -12,6 +13,7 @@ base = {
         },
         {
             id: 30,
+            lane: 1,
             body: "Supporting Evidence",
             post_type: {
                 resource_uri: '/api/v1/post_type/50',
@@ -20,6 +22,7 @@ base = {
         },
         {
             id: 40,
+            lane: 1,
             body: "Counter Argument",
             post_type: {
                 resource_uri: '/api/v1/post_type/60',
@@ -28,6 +31,7 @@ base = {
         },
         {
             id: 50,
+            lane: 1,
             body: "Conclusion",
             post_type: {
                 resource_uri: '/api/v1/post_type/70',
@@ -38,6 +42,7 @@ base = {
     planks: [
         {
             id: 30,
+            lane: 1,
             body: 'Climate Change is happening because of pollution
             in the atmosphere caused by humans.',
             post_type: {
@@ -47,6 +52,7 @@ base = {
         },
         {
             id: 40,
+            lane: 1,
             body: 'Carbon Dioxide levels in the atmosphere have have continued
             to rise since the beginning of the Industrial Revolution.',
             post_type: {
@@ -56,6 +62,7 @@ base = {
         },
         {
             id: 50,
+            lane: 1,
             body: 'Climate change is not connected to human activity, and is
             a natural process that Earth undergoes as a result of the
             precession of the Earth’s axis.',
@@ -66,6 +73,7 @@ base = {
         },
         {
             id: 60,
+            lane: 1,
             body: 'There are both natural and unnatural (human induced)
             reasons that climate change is happening on Earth.',
             post_type: {
