@@ -14,6 +14,10 @@ module.exports = class PostView extends View
             drop: @drop
             out: @out
 
+        @$el.toggleClass 'left', (@model.get('lane') == 1)
+
+        @$el.toggleClass 'right', (@model.get('lane') == 2)
+
     drop: (ev, ui)=>
         ev.preventDefault()
         Backbone.Mediator.pub "post:drop", this, ui.draggable

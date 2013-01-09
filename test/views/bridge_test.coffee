@@ -22,8 +22,14 @@ describe 'BridgeView', ->
         expect(@view.model).to.be.an.instanceof BridgeModel
 
     describe 'Posts view rendering', ->
-        it "should display its posts region", ->
-            expect(@view.$('.posts').length).to.equal 1
+        it "should render its posts regions", ->
+            expect(@view.$('.posts').length).to.equal 2
+
+        it "should display its left posts region", ->
+            expect(@view.$('.posts.left.active').length).to.equal 1
+
+        it "should not display its right posts region", ->
+            expect(@view.$('.posts.right.active').length).to.not.equal 1
 
         it "should display its correct number of posts", ->
             expect(@view.$('.posts').children('.post').length)

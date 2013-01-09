@@ -59,7 +59,12 @@ module.exports = class BridgeView extends View
         @postViews.push postView
 
         if post
-            @$('.posts').append postView.$el
+            if post.get('lane') == 1
+                @$('.posts.left').toggleClass 'active', true
+                @$('.posts.left').append postView.$el
+            if post.get('lane') == 2
+                @$('.posts.right').toggleClass 'active', true
+                @$('.posts.right').append postView.$el
         @
 
     addOnePlank: (plank, planks) =>

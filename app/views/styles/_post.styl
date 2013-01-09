@@ -1,17 +1,23 @@
 .post
     width 310px
     height 100px
-    padding 5px
+    padding 5px 5px 5px 0
     color white
     border 1px solid #000000
     background-color rgba(255,255,255,0.7)
     list-style none
 
-.postbox
-    width 100px
-    height 80px
-    margin 5px 0 0 -105px
-    padding 5px
-    background-color rgba(242,56,90,0.8)
-    color black
-    list-style none
+    //lane positions
+    &.left
+        margin-left 0
+    &.right
+        margin-left 0
+
+    .postbox
+        width 100px
+        height 80px
+        margin 5px 0 0 -105px
+        padding 5px
+        background-color rgba(242,56,90,0.8)
+        color black
+        list-style none
