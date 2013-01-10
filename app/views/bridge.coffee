@@ -83,19 +83,11 @@ module.exports = class BridgeView extends View
             @$('.planks').append plankView.$el
         @
 
-    check: (ev) =>
-        @model.get('posts').every (post) =>
-            plank = post.get 'plank'
-            if plank
-                post.matchesPlank(plank) or plank.get('lane') == 0
-            else
-                no
-
     onChange: (ev)=>
         @render()
 
     onClickGoButton: (ev)=>
-        success = @check ev
+        success = @model.check()
         @$el.children('.indicator').toggleClass 'win', success
         @$el.children('.indicatorFail').toggleClass 'fail', not success
 

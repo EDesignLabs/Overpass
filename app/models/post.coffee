@@ -5,6 +5,5 @@ module.exports = class PostModel extends Model
 
     matchesPlank: (plank) ->
         match = @get('post_type') is plank?.get('post_type')
-        match = match and @get('lane') is plank?.get('lane')
 
 PostModel.setup()
