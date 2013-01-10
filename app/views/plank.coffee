@@ -35,10 +35,12 @@ module.exports = class PlankView extends View
     onPostDrop: (postView, draggable) ->
         if @$el.attr('id') == draggable.attr('id')
             postView.model.set 'plank', @model
-            Backbone.Mediator.pub 'plank:set'
+            Backbone.Mediator.pub 'plank:set', @, postView
+            postView.$el.toggleClass 'full', true
 
     onPostOut: (postView, draggable) ->
         if @$el.attr('id') == draggable.attr('id')
             if postView.model.get('plank')?.get('id') == @model.get('id')
                 postView.model.unset 'plank'
-                Backbone.Mediator.pub 'plank:unset'
+                Backbone.Mediator.pub 'plank:unset', @, postView
+                postView.$el.toggleClass 'full', false

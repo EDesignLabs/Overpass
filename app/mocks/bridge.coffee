@@ -1,6 +1,7 @@
 Mock = require "../lib/mock"
 
 base = {
+    title: "Test Bridge",
     posts: [
         {
             id: 20,

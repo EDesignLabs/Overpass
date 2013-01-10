@@ -22,12 +22,10 @@ module.exports = class BridgeView extends View
         @plankViews = []
         @postViews = []
         super()
+        @model.on 'change', @onChange
         @model.on 'add:posts', @addOnePost
         @model.on 'add:planks', @addOnePlank
-
-    afterRender: ->
-        @addAllPosts @model.get('posts')#.models
-        @addAllPlanks @model.get('planks')#.models
+        @model.fetch()
 
     addAllPosts: (@posts) ->
         @removeAllPosts()
@@ -37,10 +35,14 @@ module.exports = class BridgeView extends View
         @
 
     removeAllPosts: () ->
+        @$('.posts').empty()
+
         _.each @postViews, (view, index, list)->
             view.remove()
 
     addAllPlanks: (@planks) ->
+        @removeAllPlanks()
+
         _.each @plankViews, (view, index, list)->
             view.remove()
 
@@ -49,12 +51,16 @@ module.exports = class BridgeView extends View
         @
 
     removeAllPlanks: () ->
+        @$('.planks').empty()
+
         _.each @plankViews, (view, index, list)->
             view.remove()
 
     addOnePost: (post, posts) =>
         postView = new PostView
             model: post
+
+        console.log posts, @model.get('posts')
 
         @postViews.push postView
 
@@ -78,12 +84,15 @@ module.exports = class BridgeView extends View
         @
 
     check: (ev) =>
-        @posts.every (post) =>
+        @model.get('posts').every (post) =>
             plank = post.get 'plank'
-            if post.get 'plank'
-                post.matchesPlank post.get 'plank'
+            if plank
+                post.matchesPlank(plank) or plank.get('lane') == 0
             else
                 no
+
+    onChange: (ev)=>
+        @render()
 
     onClickGoButton: (ev)=>
         success = @check ev
