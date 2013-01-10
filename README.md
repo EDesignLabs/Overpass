@@ -61,6 +61,12 @@
     npm install
 ```
 
+- Update the existing modules Overpass needs, in case there have been changes
+
+```
+    npm update
+```
+
 - Once you've finished your work and have added and commited your changes locally, push to your own *origin* repo:
 
 ```
