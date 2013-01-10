@@ -60,8 +60,6 @@ module.exports = class BridgeView extends View
         postView = new PostView
             model: post
 
-        console.log posts, @model.get('posts')
-
         @postViews.push postView
 
         if post
@@ -93,6 +91,8 @@ module.exports = class BridgeView extends View
 
     onPlankMoved: (ev)=>
         #do something like reset the activity timer
+        @$el.children('.indicator').removeClass 'win'
+        @$el.children('.indicatorFail').removeClass 'fail'
 
     onPlankSet: (ev)=>
         Backbone.Mediator.pub 'bridge:modified'
