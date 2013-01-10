@@ -20,8 +20,8 @@ module.exports = class PostView extends View
 
     drop: (ev, ui)=>
         ev.preventDefault()
-        Backbone.Mediator.pub "post:drop", this, ui.draggable
+        Backbone.Mediator.pub "post:drop", @, ui.draggable
 
     out: (ev, ui)=>
         ev.preventDefault()
-        Backbone.Mediator.pub "post:out", this, ui.draggable
+        Backbone.Mediator.pub "post:out", @, ui.draggable

@@ -7,9 +7,13 @@ describe 'BridgeView', ->
         @factory = new TestObjectFactory
 
     beforeEach ->
-        @model = @factory.create 'bridge'
+        @model = new BridgeModel @factory.create('bridge')
         @view = new BridgeView
             model: @model
+        @model.get('posts').each (post)=>
+            @view.model.get('posts').add post
+        @model.get('planks').each (plank)=>
+            @view.model.get('planks').add plank
 
     afterEach ->
         @model.destroy()
@@ -22,6 +26,11 @@ describe 'BridgeView', ->
         expect(@view.model).to.be.an.instanceof BridgeModel
 
     describe 'Posts view rendering', ->
+        it "should render its title", ->
+            expect(@view.$('h1.title').length).to.equal 1
+            expect(@view.$('h1.title').text())
+                .to.equal @view.model.get 'title'
+
         it "should render its posts regions", ->
             expect(@view.$('.posts').length).to.equal 2
 
@@ -32,7 +41,7 @@ describe 'BridgeView', ->
             expect(@view.$('.posts.right.active').length).to.not.equal 1
 
         it "should display its correct number of posts", ->
-            expect(@view.$('.posts').children('.post').length)
+            expect(@view.$('.posts.left').children('.post').length)
                 .to.equal @view.model.get('posts').length
 
         it "should display new posts", ->
