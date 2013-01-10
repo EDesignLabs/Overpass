@@ -8,6 +8,9 @@ class BridgeModel extends Model
     #for the moment, we're not actually cloning bridges
     #so, we use the level to fake it
     urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
+    urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
+    urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
+    urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
 
     relations: [
         type: Backbone.HasMany
@@ -76,7 +79,7 @@ class BridgeModel extends Model
 
     check: =>
         # check to make sure planks are grouped together
-        matchTypes() and matchLanes()
+        @matchTypes() and @matchLanes()
 
 
 BridgeModel.setup()
