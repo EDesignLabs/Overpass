@@ -31,7 +31,6 @@ module.exports = class BridgeView extends View
     afterRender: ->
 
     addAllPosts: (@posts) ->
-        console.log "Added all"
         @removeAllPosts()
 
         @posts.each (post)=>
@@ -61,7 +60,6 @@ module.exports = class BridgeView extends View
             view.remove()
 
     addOnePost: (post, posts) =>
-        console.log "adding"
         postView = new PostView
             model: post
 

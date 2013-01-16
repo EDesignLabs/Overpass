@@ -19,7 +19,7 @@ class BridgeModel extends Model
         reverseRelation:
             type: Backbone.HasOne
             key: 'bridge'
-            includeInJSON: @idAttribute
+            includeInJSON: false
     ,
         type: Backbone.HasMany
         key: 'posts'
@@ -29,7 +29,7 @@ class BridgeModel extends Model
         reverseRelation:
             type: Backbone.HasOne
             key: 'bridge'
-            includeInJSON: @idAttribute
+            includeInJSON: false
     ]
 
     matchLanes: =>
