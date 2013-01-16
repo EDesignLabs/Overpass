@@ -21,15 +21,17 @@ module.exports = class BridgeView extends View
     initialize: ->
         @plankViews = []
         @postViews = []
-        super()
         @model.on 'change', @onChange
         @model.on 'add:posts', @addOnePost
+        @model.on 'reset:posts', @addAllPosts
         @model.on 'add:planks', @addOnePlank
-        @model.fetch()
+        @model.on 'reset:planks', @addAllPlanks
+        super()
 
     afterRender: ->
 
     addAllPosts: (@posts) ->
+        console.log "Added all"
         @removeAllPosts()
 
         @posts.each (post)=>
@@ -59,6 +61,7 @@ module.exports = class BridgeView extends View
             view.remove()
 
     addOnePost: (post, posts) =>
+        console.log "adding"
         postView = new PostView
             model: post
 

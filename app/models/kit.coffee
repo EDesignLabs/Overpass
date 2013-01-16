@@ -4,6 +4,7 @@ BridgesCollection = require "collections/bridges"
 
 class KitModel extends Model
     urlRoot: ($PROCESS_ENV_BASE_API_URL ||'') + '/api/v1/kit/'
+    idAttribute: "resource_uri"
 
     relations: [
         type: Backbone.HasMany

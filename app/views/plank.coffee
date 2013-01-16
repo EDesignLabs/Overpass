@@ -19,6 +19,7 @@ module.exports = class PlankView extends View
             @onChangeModelBody()
         @model.on 'error', =>
             @onErrorModel()
+        @model.on 'remove', @onRemove
 
     afterRender: ->
         @$el.draggable
@@ -44,3 +45,6 @@ module.exports = class PlankView extends View
                 postView.model.unset 'plank'
                 Backbone.Mediator.pub 'plank:unset', @, postView
                 postView.$el.toggleClass 'full', false
+
+    onRemove: ()=>
+        @remove()

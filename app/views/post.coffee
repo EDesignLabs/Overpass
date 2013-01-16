@@ -12,7 +12,11 @@ module.exports = class PostView extends View
     events:
         'click .help': 'onClickHelp'
 
-    afterRender: =>
+    initialize: ->
+        super()
+        @model.on 'remove', @onRemove
+
+    afterRender: ->
         @$el.droppable
             drop: @drop
             out: @out
@@ -22,6 +26,7 @@ module.exports = class PostView extends View
         @$el.toggleClass 'right', (@model.get('lane') == 2)
 
         @$(".hint").hide()
+        @$el.attr 'id', 'post-' + @cid
 
     drop: (ev, ui)=>
         ev.preventDefault()
@@ -34,3 +39,6 @@ module.exports = class PostView extends View
     onClickHelp: (ev)=>
         @$(".hint").dialog()
         @$(".help").hide()
+
+    onRemove: ()=>
+        @remove()

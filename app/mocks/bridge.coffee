@@ -4,7 +4,7 @@ base = {
     title: "Test Bridge",
     posts: [
         {
-            id: 20,
+            resource_uri: '/api/v1/post/20',
             lane: 1,
             body: "Main Argument",
             post_type: {
@@ -13,7 +13,7 @@ base = {
             }
         },
         {
-            id: 30,
+            resource_uri: '/api/v1/post/30',
             lane: 1,
             body: "Supporting Evidence",
             post_type: {
@@ -22,7 +22,7 @@ base = {
             }
         },
         {
-            id: 40,
+            resource_uri: '/api/v1/post/40',
             lane: 1,
             body: "Counter Argument",
             post_type: {
@@ -31,7 +31,7 @@ base = {
             }
         },
         {
-            id: 50,
+            resource_uri: '/api/v1/post/50',
             lane: 1,
             body: "Conclusion",
             post_type: {
@@ -42,7 +42,7 @@ base = {
     ],
     planks: [
         {
-            id: 30,
+            resource_uri: '/api/v1/plank/30',
             lane: 1,
             body: 'Climate Change is happening because of pollution
             in the atmosphere caused by humans.',
@@ -52,7 +52,7 @@ base = {
             }
         },
         {
-            id: 40,
+            resource_uri: '/api/v1/plank/40',
             lane: 1,
             body: 'Carbon Dioxide levels in the atmosphere have have continued
             to rise since the beginning of the Industrial Revolution.',
@@ -62,7 +62,7 @@ base = {
             }
         },
         {
-            id: 50,
+            resource_uri: '/api/v1/plank/50',
             lane: 1,
             body: 'Climate change is not connected to human activity, and is
             a natural process that Earth undergoes as a result of the
@@ -73,7 +73,7 @@ base = {
             }
         },
         {
-            id: 60,
+            resource_uri: '/api/v1/plank/60',
             lane: 1,
             body: 'There are both natural and unnatural (human induced)
             reasons that climate change is happening on Earth.',

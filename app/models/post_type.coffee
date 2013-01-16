@@ -6,6 +6,7 @@ PlanksCollection = require "collections/planks"
 
 class PostTypeModel extends Model
     urlRoot:  ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/post_type/'
+    idAttribute: "resource_uri"
 
     relations: [
         type: Backbone.HasMany
@@ -16,7 +17,7 @@ class PostTypeModel extends Model
         reverseRelation:
             type: Backbone.HasOne
             key: 'post_type'
-            includeInJSON: true
+            includeInJSON: @idAttribute
     ,
         type: Backbone.HasMany
         key: 'planks'
@@ -26,7 +27,7 @@ class PostTypeModel extends Model
         reverseRelation:
             type: Backbone.HasOne
             key: 'post_type'
-            includeInJSON: true
+            includeInJSON: @idAttribute
     ]
 
 PostTypeModel.setup()

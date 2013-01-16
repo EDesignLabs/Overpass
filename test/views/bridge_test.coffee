@@ -1,5 +1,7 @@
 BridgeView = require 'views/bridge'
 BridgeModel = require 'models/bridge'
+PostModel = require 'models/post'
+PlankModel = require 'models/post'
 TestObjectFactory = require 'lib/test_object_factory'
 
 describe 'BridgeView', ->
@@ -8,12 +10,31 @@ describe 'BridgeView', ->
 
     beforeEach ->
         @model = new BridgeModel @factory.create('bridge')
+        @model.on 'add:posts', =>
+            console.log "got here"
         @view = new BridgeView
             model: @model
-        @model.get('posts').each (post)=>
-            @view.model.get('posts').add post
-        @model.get('planks').each (plank)=>
-            @view.model.get('planks').add plank
+
+        # posts = []
+        # @model.get('posts').each (post)=>
+        #     posts.push post.toJSON()
+        
+        # @view.model.get('posts').add posts
+
+        # _.each posts, (post)=>
+        #     @view.model.get('posts').remove post 
+        #     @view.model.get('posts').add post 
+
+        # console.log @view.model.get('posts').length
+
+
+        # planks = []
+        # @model.get('planks').each (plank)=>
+        #     planks.push plank.toJSON()
+        
+        # _.each planks, (plank)=>
+        #     @view.model.get('planks').remove plank 
+        #     @view.model.get('planks').add plank 
 
     afterEach ->
         @model.destroy()
@@ -47,8 +68,17 @@ describe 'BridgeView', ->
         it "should display new posts", ->
             expect(@view.$('.posts').children('.post').length)
                 .to.equal @view.model.get('posts').length
-            @view.model.get('posts')
-                .add @factory.create 'post'
+            post = @view.model.get('posts').at(0).toJSON()
+             
+            mp = new PostModel(post)
+            console.log mp
+
+            p = @view.model.get('posts')
+
+            console.log p.length
+            console.log p.add mp
+            console.log p.length
+
             expect(@view.$('.posts').children('.post').length)
                 .to.equal @view.model.get('posts').length
 
@@ -65,7 +95,7 @@ describe 'BridgeView', ->
                     .children('.post')
                     .first()
                     .html())
-                .to.equal(postView.$el.html())
+                .to.equal postView.$el.html()
 
         it "should display the correct last post html", ->
             @view.model.get('posts')
