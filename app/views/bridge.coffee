@@ -27,6 +27,8 @@ module.exports = class BridgeView extends View
         @model.on 'add:planks', @addOnePlank
         @model.fetch()
 
+    afterRender: ->
+
     addAllPosts: (@posts) ->
         @removeAllPosts()
 
@@ -83,6 +85,7 @@ module.exports = class BridgeView extends View
 
     onChange: (ev)=>
         @render()
+        @dialog = $(".bridge>.hint").dialog()
 
     onClickGoButton: (ev)=>
         success = @model.check()
@@ -102,6 +105,7 @@ module.exports = class BridgeView extends View
 
     onBridgeModified: (ev)=>
         #do something like drop the next plank, etc.
+        Backbone.Mediator.pub "post:out", @, ui.draggable
 
     remove: ->
         @removeAllPosts()

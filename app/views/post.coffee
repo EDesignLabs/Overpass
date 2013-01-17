@@ -9,7 +9,10 @@ module.exports = class PostView extends View
 
     model: new PostModel()
 
-    afterRender: ->
+    events:
+        'click .help': 'onClickHelp'
+
+    afterRender: =>
         @$el.droppable
             drop: @drop
             out: @out
@@ -18,6 +21,8 @@ module.exports = class PostView extends View
 
         @$el.toggleClass 'right', (@model.get('lane') == 2)
 
+        @$(".hint").hide()
+
     drop: (ev, ui)=>
         ev.preventDefault()
         Backbone.Mediator.pub "post:drop", @, ui.draggable
@@ -25,3 +30,7 @@ module.exports = class PostView extends View
     out: (ev, ui)=>
         ev.preventDefault()
         Backbone.Mediator.pub "post:out", @, ui.draggable
+
+    onClickHelp: (ev)=>
+        @$(".hint").dialog()
+        @$(".help").hide()
