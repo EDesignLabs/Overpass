@@ -1,9 +1,10 @@
 .bridge
     clearfix()
-    margin 50px 0 50px 0
+    margin 75px 0 50px 0
 
     .title
         margin-top -40px
+        margin-left 100px
         color white
         text-align center
 
@@ -31,9 +32,10 @@
 
     .go-button
         float right
-        margin -70px auto
-        width 3em
-        height 2.6em
+        position absolute
+        margin -90px auto
+        width 5em
+        height 2.5em
         padding 0.5em 0
         background-color rgb(242,56,90)
         color white
@@ -41,21 +43,22 @@
         text-align center
         border-radius 0.2em
         border 0.2em solid white
+        left 75%
 
 
     .indicator
         position absolute
         width 200px
         height 297px
-        left 15%
-        top -340px
+        left 225px
+        top -190px
 
         &.win
             position absolute
             width 200px
             height 297px
             left 15%
-            top 1000px
+            top 100%
             -webkit-transition ease-in-out 2.5s
             -moz-transition    ease-in-out 2.5s
             -o-transition      ease-in-out 2.5s
@@ -63,19 +66,18 @@
 
     .indicatorFail
         position absolute
-        width 200px
-        height 297px
-        left 20%
-        top -340px
+        width 225px
+        height 360px
+        left 25px
+        top -360px
 
         &.fail
             position absolute
-            width 50px
-            height 75px
-            left 45%
-            left 110%
-            top 500px
-            -webkit-transition ease-in-out 2s
-            -moz-transition    ease-in-out 2s
-            -o-transition      ease-in-out 2s
-            transition         ease-in-out 2s
+            width 125px
+            height 200px
+            left 15px
+            top 400px
+            -webkit-transition linear 1.5s
+            -moz-transition    linear 1.5s
+            -o-transition      linear 1.5s
+            transition         linear 1.5s
