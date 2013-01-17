@@ -25,6 +25,7 @@ module.exports = class PlankView extends View
         @$el.draggable
             start: =>
                 Backbone.Mediator.pub 'plank:moved'
+            containment: '.bridge'
         @$el.attr 'id', 'plank-' + @cid
 
     onChangeModelBody: () ->

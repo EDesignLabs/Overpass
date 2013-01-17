@@ -28,6 +28,11 @@ module.exports = class PostView extends View
         @$(".hint").hide()
         @$el.attr 'id', 'post-' + @cid
 
+        @hint = @$el.children(".hint")
+        @hint.dialog
+            autoOpen: false
+            title: "Hint"
+
     drop: (ev, ui)=>
         ev.preventDefault()
         Backbone.Mediator.pub "post:drop", @, ui.draggable
@@ -37,8 +42,8 @@ module.exports = class PostView extends View
         Backbone.Mediator.pub "post:out", @, ui.draggable
 
     onClickHelp: (ev)=>
-        @$(".hint").dialog()
-        @$(".help").hide()
-
+        @hint.dialog "open"
+        false
+ 
     onRemove: ()=>
         @remove()
