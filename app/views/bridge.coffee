@@ -105,7 +105,6 @@ module.exports = class BridgeView extends View
 
     onBridgeModified: (ev)=>
         #do something like drop the next plank, etc.
-        Backbone.Mediator.pub "post:out", @, ui.draggable
 
     remove: ->
         @removeAllPosts()
