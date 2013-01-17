@@ -8,9 +8,7 @@ class BridgeModel extends Model
     #for the moment, we're not actually cloning bridges
     #so, we use the level to fake it
     urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
-    urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
-    urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
-    urlRoot: ($PROCESS_ENV_BASE_API_URL||'') + '/api/v1/level/'
+    idAttribute: "resource_uri"
 
     relations: [
         type: Backbone.HasMany

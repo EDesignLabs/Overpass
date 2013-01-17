@@ -9,6 +9,7 @@ module.exports = class BridgeView extends View
 
     events:
         'click .go-button': 'onClickGoButton'
+        'click .help': 'onClickHelp'
 
     subscriptions:
         "plank:moved":      "onPlankMoved"
@@ -21,13 +22,18 @@ module.exports = class BridgeView extends View
     initialize: ->
         @plankViews = []
         @postViews = []
-        super()
         @model.on 'change', @onChange
         @model.on 'add:posts', @addOnePost
+        @model.on 'reset:posts', @addAllPosts
         @model.on 'add:planks', @addOnePlank
-        @model.fetch()
+        @model.on 'reset:planks', @addAllPlanks
+        super()
 
     afterRender: ->
+        @hint = @$el.children(".hint")
+        @hint.dialog
+            autoOpen: true
+            title: "Hint"
 
     addAllPosts: (@posts) ->
         @removeAllPosts()
@@ -85,12 +91,14 @@ module.exports = class BridgeView extends View
 
     onChange: (ev)=>
         @render()
-        @dialog = $(".bridge>.hint").dialog()
 
     onClickGoButton: (ev)=>
         success = @model.check()
         @$el.children('.indicator').toggleClass 'win', success
         @$el.children('.indicatorFail').toggleClass 'fail', not success
+
+    onClickHelp: (ev)=>
+        @hint.dialog "open"
 
     onPlankMoved: (ev)=>
         #do something like reset the activity timer
@@ -109,4 +117,5 @@ module.exports = class BridgeView extends View
     remove: ->
         @removeAllPosts()
         @removeAllPlanks()
+        @hint.dialog "close"
         super()
