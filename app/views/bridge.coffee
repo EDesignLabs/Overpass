@@ -95,6 +95,7 @@ module.exports = class BridgeView extends View
     onClickGoButton: (ev)=>
         success = @model.check()
         @$el.children('.indicator').toggleClass 'win', success
+        @$el.children('.indicatorWin').toggleClass 'win', success
         @$el.children('.indicatorFail').toggleClass 'fail', not success
 
     onClickHelp: (ev)=>
@@ -103,6 +104,7 @@ module.exports = class BridgeView extends View
     onPlankMoved: (ev)=>
         #do something like reset the activity timer
         @$el.children('.indicator').removeClass 'win'
+        @$el.children('.indicatorWin').removeClass 'win'
         @$el.children('.indicatorFail').removeClass 'fail'
 
     onPlankSet: (ev)=>
