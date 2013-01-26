@@ -1,3 +1,6 @@
+KitsCollection  = require '../collections/kits'
+KitsView  = require '../views/kits'
+
 KitModel  = require '../models/kit'
 KitView  = require '../views/kit'
 
@@ -6,9 +9,27 @@ BridgeView  = require '../views/bridge'
 
 module.exports = class AppRouter extends Backbone.Router
     routes:
-        '': ->
+        '': 'kits'
         'kit/:id': 'kit'
         'bridge/:id': 'bridge'
+
+    kits: () ->
+        Overpass?.Views?.KitsView?.remove()
+
+        kitsCollection = new KitsCollection()
+        kitsCollection.fetch()
+
+        @kits = new KitsView
+            collection: kitsCollection
+
+        @kits.collection.on 'reset', @kits.render, @
+
+        Overpass?.Views?.KitsView = @kits
+
+        Overpass?.Views?.AppView.$el.children('.layout-container').empty()
+
+        Overpass?.Views?.AppView.$el.children('.layout-container')
+            .prepend @kits.$el
 
     kit: (id) ->
         Overpass?.Views?.KitView?.remove()
